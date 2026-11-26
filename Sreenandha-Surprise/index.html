@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Special Surprise for Sreenandha 💗</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    background: linear-gradient(-45deg,
+        #170b35, #56205f, #a52c79, #32134f);
+    background-size: 400% 400%;
+    animation: backgroundMove 14s ease infinite;
+}
+
+@keyframes backgroundMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* GLOWING BACKGROUND */
+
+.glow {
+    position: fixed;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .45;
+    pointer-events: none;
+    z-index: 0;
+    animation: glowMove 9s infinite alternate;
+}
+
+.glow.one {
+    background: #ff40b3;
+    top: 5%;
+    left: -100px;
+}
+
+.glow.two {
+    background: #914cff;
+    right: -100px;
+    top: 50%;
+    animation-delay: 2s;
+}
+
+.glow.three {
+    background: #ff8fca;
+    bottom: -100px;
+    left: 35%;
+    animation-delay: 4s;
+}
+
+@keyframes glowMove {
+    to { transform: translate(65px, 55px) scale(1.35); }
+}
+
+/* FLOATING PARTICLES */
+
+#particles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.particle {
+    position: absolute;
+    bottom: -40px;
+    opacity: 0;
+    animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+    15% { opacity: .9; }
+    100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* GLOWING STARS */
+
+.star {
+    position: fixed;
+    color: #fff0fa;
+    pointer-events: none;
+    z-index: 1;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from {
+        opacity: .15;
+        transform: scale(.6);
+        text-shadow: 0 0 5px white;
+    }
+    to {
+        opacity: 1;
+        transform: scale(1.4);
+        text-shadow: 0 0 18px #ffb8e8;
+    }
+}
+
+/* WELCOME SCREEN */
+
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    background: radial-gradient(circle, #74215f, #170b35 75%);
+    transition: opacity .9s ease, visibility .9s ease;
+}
+
+#intro.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.intro-icon {
+    font-size: 65px;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+#intro h1 {
+    font-size: clamp(30px, 7vw, 48px);
+    color: #fff;
+    text-shadow: 0 0 25px #ff9cdb;
+    margin-bottom: 15px;
+}
+
+#intro p {
+    color: #ffe0f2;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+/* MAIN CONTENT */
+
+main {
+    position: relative;
+    z-index: 2;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 15px;
+}
+
+.card {
+    width: 100%;
+    max-width: 620px;
+    padding: 40px 25px;
+    text-align: center;
+    border-radius: 28px;
+    border: 1px solid rgba(255,255,255,.3);
+    background: rgba(255,255,255,.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 15px 50px rgba(0,0,0,.25);
+    animation: appear 1.2s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.tag {
+    letter-spacing: 4px;
+    color: #ffd4ed;
+    font-size: 12px;
+    margin-bottom: 17px;
+}
+
+.card h2 {
+    font-size: clamp(30px, 7vw, 48px);
+    line-height: 1.2;
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px #ffb3df;
+}
+
+.name {
+    color: #ffc5e6;
+}
+
+.subtitle {
+    color: #ffe5f4;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.cake {
+    font-size: 78px;
+    display: inline-block;
+    margin: 15px;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 0 15px #ffaddb);
+}
+
+@keyframes bounce {
+    50% { transform: translateY(-12px); }
+}
+
+/* BUTTONS */
+
+button {
+    padding: 14px 25px;
+    border: none;
+    border-radius: 40px;
+    background: linear-gradient(135deg, #fff, #ffc6e6);
+    color: #85225f;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 8px;
+    transition: .3s;
+    box-shadow: 0 5px 20px rgba(255,120,200,.3);
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 8px 25px rgba(255,150,220,.6);
+}
+
+/* COMPLIMENTS */
+
+#compliment {
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff0f8;
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 20px auto;
+    max-width: 470px;
+    transition: opacity .35s;
+}
+
+/* SECRET LETTER */
+
+.envelope {
+    font-size: 70px;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 20px;
+    animation: bounce 2s infinite;
+    transition: .3s;
+}
+
+.envelope:hover {
+    transform: scale(1.15);
+}
+
+.hint {
+    color: #ffe0f2;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+#letter {
+    display: none;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 18px;
+    color: #71365f;
+    background: linear-gradient(135deg, #fff7fc, #ffe0f1);
+    text-align: left;
+    line-height: 1.8;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+
+#letter.show {
+    display: block;
+    animation: appear .8s ease;
+}
+
+#letter h3 {
+    text-align: center;
+    color: #bd438d;
+    margin-bottom: 16px;
+}
+
+#letter p {
+    margin-bottom: 13px;
+}
+
+.signature {
+    text-align: right;
+    color: #a52b79;
+    font-weight: bold;
+    margin-top: 18px;
+}
+
+/* FINAL SURPRISE */
+
+#finalMessage {
+    display: none;
+    margin-top: 25px;
+    padding: 24px;
+    border-radius: 20px;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    line-height: 1.8;
+}
+
+#finalMessage.show {
+    display: block;
+    animation: appear .8s ease;
+}
+
+.final-emoji {
+    font-size: 40px;
+    margin: 12px;
+}
+
+.footer {
+    color: #ffe1f2;
+    font-size: 12px;
+    margin-top: 28px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media(max-width: 500px) {
+    .card { padding: 30px 18px; }
+    #letter { padding: 19px; font-size: 14px; }
+    .cake { font-size: 68px; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+<div class="glow three"></div>
+<div id="particles"></div>
+
+<!-- WELCOME SCREEN -->
+
+<div id="intro">
+    <div class="intro-icon">✨💗✨</div>
+    <h1>A Little Surprise<br>For Sreenandha</h1>
+    <p>
+        Not an ordinary webpage...<br>
+        Just a little something made to bring a smile.
+    </p>
+    <button onclick="beginSurprise()">
+        Open Your Surprise 💌
+    </button>
+</div>
+
+<!-- MAIN WEBSITE -->
+
+<main>
+<section class="card">
+
+    <div class="tag">A LITTLE NOTE FROM THE HEART</div>
+
+    <h2>
+        Hey, <span class="name">Sreenandha!</span> 💖
+    </h2>
+
+    <p class="subtitle">
+        Sometimes, a small surprise can make an ordinary
+        day a little more memorable. Here's one for you!
+    </p>
+
+    <div class="cake">🎂</div>
+
+    <!-- COMPLIMENTS -->
+
+    <div id="compliment">
+        Every person has something special about them.
+        Here's a little reminder of yours. 🌷
+    </div>
+
+    <button onclick="nextCompliment()">
+        Tell Me Something Nice 🌸
+    </button>
+
+    <!-- SECRET LETTER BUTTON -->
+
+    <div style="margin-top:25px;">
+        <div class="envelope" onclick="openLetter()">💌</div>
+        <div class="hint">
+            Psst... there's a secret letter waiting for you!
+        </div>
+    </div>
+
+    <!-- UPDATED SECRET LETTER -->
+
+    <div id="letter">
+        <h3>Something I Really Want You to Know 💌</h3>
+
+        <p>
+            Hey Sreenandha! 🌸
+        </p>
+
+        <p>
+            There is something I've wanted to tell you.
+            Thank you for being someone who genuinely cares.
+            Your support, encouragement and the way you motivate
+            me mean more than you probably realise.
+        </p>
+
+        <p>
+            Whenever things feel difficult or I start doubting
+            myself, your words and encouragement remind me
+            to keep going. Sometimes, even a small act of kindness
+            can make a big difference, and you have shown me that.
+        </p>
+
+        <p>
+            I may not always say it, but I genuinely appreciate
+            the way you support me, listen to me and encourage
+            me to become better. Those little things never go unnoticed.
+        </p>
+
+        <p>
+            I hope you receive the same kindness, happiness and
+            encouragement that you give to others. You deserve
+            people who support you, believe in you and celebrate
+            your achievements.
+        </p>
+
+        <p>
+            And please, never stop being the cheerful,
+            caring and wonderful person you are.
+            Also, don't stop smiling — it's part of your job now! 😂🌷
+        </p>
+
+        <p>
+            Thank you for being a positive part of my life.
+            I feel lucky to know someone as thoughtful as you.
+        </p>
+
+        <p>
+            Keep chasing your dreams, keep shining, and always
+            remember that your kindness makes a difference. ✨
+        </p>
+
+        <div class="signature">
+            With genuine appreciation,<br>
+            Someone who is thankful for you 💗
+        </div>
+    </div>
+
+    <!-- FINAL SURPRISE -->
+
+    <button onclick="showFinal()">
+        One Last Surprise 🎁
+    </button>
+
+    <div id="finalMessage">
+        <h2 style="font-size:28px;">
+            A Wish Just for You ✨
+        </h2>
+
+        <div class="final-emoji">🌸💖🌷</div>
+
+        <p>
+            May your days be filled with laughter,
+            your dreams with possibilities, and your
+            memories with beautiful moments.
+        </p>
+
+        <p>
+            Keep smiling, Sreenandha.
+            The best chapters are still waiting to be written! 💗
+        </p>
+
+        <div class="final-emoji">🎂✨💕</div>
+    </div>
+
+    <div class="footer">
+        Created with thoughtful wishes, just for you 💗
+    </div>
+
+</section>
+</main>
+
+<script>
+
+/* START THE SURPRISE */
+
+function beginSurprise() {
+    document.getElementById("intro").classList.add("hide");
+    burst();
+}
+
+/* FLOATING HEARTS AND FLOWERS */
+
+const particleArea = document.getElementById("particles");
+
+const symbols = [
+    "💗", "💕", "💖", "🌹",
+    "🌸", "✨", "💫", "🌷"
+];
+
+function createParticle() {
+    const particle = document.createElement("div");
+
+    particle.className = "particle";
+    particle.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+    particle.style.left = Math.random() * 100 + "vw";
+    particle.style.fontSize =
+        (14 + Math.random() * 20) + "px";
+    particle.style.animationDuration =
+        (6 + Math.random() * 7) + "s";
+
+    particleArea.appendChild(particle);
+
+    particle.addEventListener("animationend", () => {
+        particle.remove();
+    }, { once: true });
+}
+
+setInterval(createParticle, 650);
+
+/* GLOWING STARS */
+
+function createStar() {
+    const star = document.createElement("div");
+
+    star.className = "star";
+    star.textContent = "✦";
+
+    star.style.left = Math.random() * 100 + "vw";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.fontSize = (8 + Math.random() * 12) + "px";
+
+    document.body.appendChild(star);
+
+    setTimeout(() => star.remove(), 4500);
+}
+
+setInterval(createStar, 850);
+
+/* COMPLIMENTS ONE BY ONE */
+
+const compliments = [
+    "Your smile deserves its own little spotlight. 😊",
+    "Never stop being wonderfully yourself. 🌷",
+    "You make ordinary moments feel a little brighter. ✨",
+    "Your individuality is something worth celebrating. 💗",
+    "Keep dreaming big and laughing often! 🌸",
+    "A little reminder: you are appreciated. 💖",
+    "Your kindness and encouragement make a difference. 🌟",
+    "You deserve the same happiness you bring to others. 💕"
+];
+
+let complimentIndex = 0;
+
+function nextCompliment() {
+    const box = document.getElementById("compliment");
+
+    box.style.opacity = 0;
+
+    setTimeout(() => {
+        box.textContent = compliments[complimentIndex];
+
+        complimentIndex =
+            (complimentIndex + 1) % compliments.length;
+
+        box.style.opacity = 1;
+    }, 350);
+
+    burst();
+}
+
+/* OPEN SECRET LETTER */
+
+function openLetter() {
+    const letter = document.getElementById("letter");
+
+    letter.classList.add("show");
+
+    burst();
+
+    setTimeout(() => {
+        letter.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }, 150);
+}
+
+/* FINAL SURPRISE */
+
+function showFinal() {
+    const message = document.getElementById("finalMessage");
+
+    message.classList.add("show");
+
+    burst();
+
+    setTimeout(() => {
+        message.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+    }, 150);
+}
+
+/* MAGICAL PARTICLE BURST */
+
+function burst() {
+    for (let i = 0; i < 25; i++) {
+        setTimeout(createParticle, i * 65);
+    }
+}
+
+</script>
+
+</body>
+</html>
